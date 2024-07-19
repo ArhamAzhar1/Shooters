@@ -5,10 +5,15 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     public BaseState activeState;
+
+    public void Initialize()
+    {
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,11 +24,9 @@ public class StateMachine : MonoBehaviour
             activeState.Perform();
         }
     }
-
-
     public void ChangeState(BaseState newState)
     {
-        if(activeState != null)
+        if (activeState != null)
         {
             activeState.Exit();
         }
