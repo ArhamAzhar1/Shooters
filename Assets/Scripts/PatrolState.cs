@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolState : MonoBehaviour
+public class PatrolState : BaseState
 {
 
     public int waypointIndex;
 
     public override void Enter()
     {
-
     }
     public override void Perform()
     {
@@ -17,14 +16,13 @@ public class PatrolState : MonoBehaviour
     }
     public override void Exit()
     {
-
     }
 
     public void PetrolCycle()
     {
         if (enemy.Agent.remainingDistance < 0.2f)
         {
-            if (waypointIndex < enemy.path.waypoints.Count = 1)
+            if (waypointIndex < enemy.path.waypoints.Count -1)
                 waypointIndex++;
             else
                 waypointIndex = 0;
