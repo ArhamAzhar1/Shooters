@@ -6,6 +6,8 @@ public class AttackState : BaseState
 {
     private float moveTimer;
     private float losePlayerTimer;
+    private float shotTimer;
+
     public override void Enter()
     {
 
@@ -22,6 +24,11 @@ public class AttackState : BaseState
         {
             losePlayerTimer = 0;
             moveTimer += Time.deltaTime;
+            shotTimer += Time.deltaTime;
+            if (shotTimer > enemy.fireRate)
+            {
+                Shoot();
+            }
             if (moveTimer > Random.Range(3,6))
             {
                 enemy.Agent.SetDestination(enemy.transform.position + (Random.insideUnitSphere * 5));
@@ -36,6 +43,12 @@ public class AttackState : BaseState
                 stateMachine.ChangeState(new PatrolState());
             }
         }
+    }
+
+    public void Shoot()
+    {
+        Debug.Log("Shoot");
+        shotTimer = 0;
     }
 
     // Start is called before the first frame update
